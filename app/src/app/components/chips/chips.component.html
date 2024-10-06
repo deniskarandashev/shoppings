@@ -1,0 +1,7 @@
+<ng-container *ngIf="dataArr">
+  <app-chip
+    *ngFor="let d of dataArr; let i = index"
+    [data]="d"
+    [index]="isSelectedMode ? i + 1 : 0"
+  ></app-chip>
+</ng-container>

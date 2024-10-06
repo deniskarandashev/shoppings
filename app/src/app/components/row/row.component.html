@@ -1,0 +1,13 @@
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>{{ name }}</mat-card-title>
+  </mat-card-header>
+<!--  <mat-card-content>-->
+<!--    <p>{{longText}}</p>-->
+<!--  </mat-card-content>-->
+  <mat-card-footer style="width: 100%" class="example-card-footer">
+    <mat-chip-set aria-label="Chihuahua traits">
+      <app-chips [data]="products"></app-chips>
+    </mat-chip-set>
+  </mat-card-footer>
+</mat-card>

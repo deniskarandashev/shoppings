@@ -1,0 +1,12 @@
+<ng-container *ngIf="hasChipData">
+  <mat-chip-option
+    #chipOption
+    (selectionChange)="onSelect($event)"
+    [selected]="isSelected"
+  >
+    <div class="chip-content">
+      <span>{{ i ? i + '. ' : '' }}{{  chipData.productName }}</span>
+      <mat-icon *ngIf="!!i" (click)="onDelete()">delete</mat-icon>
+    </div>
+  </mat-chip-option>
+</ng-container>

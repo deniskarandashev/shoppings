@@ -1,0 +1,17 @@
+<mat-form-field
+  class="example-form-field"
+>
+  <mat-label>Add products</mat-label>
+  <div class="flex-row">
+    <input matInput type="text" [(ngModel)]="value">
+    @if (value) {
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+    <button matSuffix mat-icon-button aria-label="Add" (click)="onAddClick()">
+      <mat-icon>add</mat-icon>
+    </button>
+    }
+  </div>
+
+</mat-form-field>
