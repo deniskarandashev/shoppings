@@ -69,6 +69,42 @@ export function breadObj(): ProductsObj {
   })
 }
 
+export function meatAndFishObj(): ProductsObj {
+  return ({
+    name: 'meat and fish',
+    data: {
+      meat: 'Meat',
+      fish: 'Fish',
+      chicken: 'Chicken',
+      ham: 'Ham',
+      sausages: 'Sausages',
+      bacon: 'Bacon'
+    }
+  })
+}
+
+export function pastaCerealsAndGrainsObj(): ProductsObj {
+  return ({
+    name: 'pasta, cereals and grains',
+    data: {
+      pasta: 'Pasta',
+      linguine: 'Linguine',
+      rice: 'Rice',
+      buckwheat: 'Buckwheat',
+      muesli: 'Muesli',
+      couscous: 'Couscous'
+    }
+  })
+}
+
+export function snacksAndSweetsObj(): ProductsObj {
+  return ({
+    name: '',
+    data: {
+      chips: 'Chips'
+    }
+  })
+}
 export function Obj(): ProductsObj {
   return ({
     name: '',

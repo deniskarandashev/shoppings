@@ -1,6 +1,14 @@
 import {Category} from '../models/category.interface';
 import {CategoryEnum} from '../models/category.enum';
-import {breadObj, dairyObj, fruitsObj, greensObj, vegetablesObj} from './products.db';
+import {
+  breadObj,
+  dairyObj,
+  fruitsObj,
+  greensObj,
+  meatAndFishObj,
+  pastaCerealsAndGrainsObj, snacksAndSweetsObj,
+  vegetablesObj
+} from './products.db';
 
 export function categoriesDb(): Category[] {
   return [
@@ -22,16 +30,18 @@ export function categoriesDb(): Category[] {
       category: CategoryEnum.breadAndPastries,
       products: [breadObj()]
     },
-    // // Мясные и рыбные продукты
-    // {
-    //   name: 'Meat and fish',
-    //   nameId: CategoryEnum.meatAndFish
-    // },
-    // // Макаронные изделия, крупы и злаки
-    // {
-    //   name: 'Pasta, cereals and grains',
-    //   nameId: CategoryEnum.pastaCerealsAndGrains
-    // },
+    // Мясные и рыбные продукты
+    {
+      name: 'Meat and fish',
+      category: CategoryEnum.meatAndFish,
+      products: [meatAndFishObj()]
+    },
+    // Макаронные изделия, крупы и злаки
+    {
+      name: 'Pasta, cereals and grains',
+      category: CategoryEnum.pastaCerealsAndGrains,
+      products: [pastaCerealsAndGrainsObj()]
+    },
     // // Замороженные продукты
     // {
     //   name: 'Frozen food',
@@ -42,11 +52,12 @@ export function categoriesDb(): Category[] {
     //   name: 'Cans and sauces',
     //   nameId: CategoryEnum.cansAndSauces
     // },
-    // // Снеки и сладости
-    // {
-    //   name: 'Snacks and sweets',
-    //   nameId: CategoryEnum.snacksAndSweets
-    // },
+    // Снеки и сладости
+    {
+      name: 'Snacks and sweets',
+      category: CategoryEnum.snacksAndSweets,
+      products: [snacksAndSweetsObj()]
+    },
     // // Напитки
     // {
     //   name: 'Drinks',

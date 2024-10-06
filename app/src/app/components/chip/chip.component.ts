@@ -5,6 +5,7 @@ import {CommonModule} from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 import {StateService} from '../../state/state.service';
 import {Product} from '../../models/product.interface';
+import {ProductBackgroundColorDirective} from '../../directives/product-background-color.directive';
 
 @Component({
   selector: 'app-chip',
@@ -13,7 +14,8 @@ import {Product} from '../../models/product.interface';
     MatChipsModule,
     MatProgressBarModule,
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    ProductBackgroundColorDirective
   ],
   templateUrl: './chip.component.html',
   styleUrl: './chip.component.scss'
