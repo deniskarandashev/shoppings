@@ -52,7 +52,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const localStoredSelected = window.localStorage.getItem(this.STATE_KEY)
-    console.log('localStoredSelected', localStoredSelected)
     if (localStoredSelected) {
       const localStoredSelectedArr = JSON.parse(localStoredSelected)
       const localStoredSelectedSet = new Set<Product>()
@@ -60,7 +59,6 @@ export class AppComponent implements OnInit, OnDestroy {
         localStoredSelectedSet.add(s)
       })
       this.state.selected.set(localStoredSelectedSet)
-      console.log(this.state.selected())
       this._cdr.detectChanges()
     }
 

@@ -32,7 +32,7 @@ export class HeaderComponent {
   copyPath() {
     const selectedStr = JSON.stringify(Array.from(this.state.selected()));
     const urlSafeData = EncriptionUtils.encryptedData(selectedStr)
-    const url = `${window.location.origin}?data=${urlSafeData}`;
+    const url = `${window.location.origin}/shoppings?data=${urlSafeData}`;
     navigator.clipboard.writeText(url).then(() => {
       console.log('Ссылка скопирована в буфер обмена!');
     }).catch(err => {
