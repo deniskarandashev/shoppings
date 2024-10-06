@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Component, effect, OnDestroy, OnInit} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {ActivatedRoute, RouterOutlet} from '@angular/router';
 import {HeaderComponent} from './components/header/header.component';
 import {categoriesDb} from './db/categories.db';
 import {RowComponent} from './components/row/row.component';
@@ -11,6 +11,8 @@ import {MatChipsModule} from '@angular/material/chips';
 import {InputComponent} from './components/input/input.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {Product} from './models/product.interface';
+import {EncriptionUtils} from './utils/encription.utils';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +24,8 @@ import {Product} from './models/product.interface';
     RowComponent,
     ChipsComponent,
     MatChipsModule,
-    InputComponent
+    InputComponent,
+    MatSnackBarModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -34,7 +37,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     public state: StateService,
-    private _cdr: ChangeDetectorRef
+    private _cdr: ChangeDetectorRef,
+    private route: ActivatedRoute
   ) {
     effect(() => {
       if (this.state.selected()) {
@@ -59,6 +63,16 @@ export class AppComponent implements OnInit, OnDestroy {
       console.log(this.state.selected())
       this._cdr.detectChanges()
     }
+
+    this.route.queryParams.subscribe(params => {
+      const data = params['data'];
+      if (data) {
+        const selectedProducts = EncriptionUtils.decodedData(data);
+        console.log('Полученные продукты:', selectedProducts);
+        this.state.selected.set(selectedProducts)
+      }
+    });
+
   }
 
   ngOnDestroy() {
