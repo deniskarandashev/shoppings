@@ -1,0 +1,32 @@
+.example-form {
+    min-width: 1rem;
+    max-width: 20rem;
+    margin-top: 0.5rem;
+  }
+  
+  .example-full-width {
+    width: 2rem;
+    height: 2rem;
+  }
+
+ .mat-mdc-form-field-subscript-wrapper {
+    // margin-bottom: 0.5rem;
+    margin-bottom: 0;
+ }
+
+//  ::ng-deep .mat-mdc-text-field-wrapper {
+//     padding: 0;
+//     align-self: center;
+//  }
+
+//  ::ng-deep .mat-mdc-text-field-wrapper {
+//     padding: 0.1rem !important;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
+
+::ng-deep .mdc-text-field--no-label 
+.mat-mdc-form-field-infix {
+    padding-top: 0 !important;
+}

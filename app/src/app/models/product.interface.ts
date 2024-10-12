@@ -4,6 +4,8 @@ import {SubCategoryEnum} from './category.enum';
 export interface Product {
   productName: string,
   productId: string,
+  price?: string,
+  quantity?: number,
   tag?: ProductTag,
   categories?: Category[]
   category?: Category | string

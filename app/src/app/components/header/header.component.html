@@ -3,9 +3,11 @@
           (click)="onAddBtnClick()"
           class="example-icon"
           aria-label="Example icon-button with menu icon"
+          [disabled]="isAddBtnDisabled"
   >
     <mat-icon>{{ state.isAddNewMode() ? 'remove' : 'add' }}</mat-icon>
   </button>
+  <app-toggle-mode></app-toggle-mode>
 <!--  <span>My App</span>-->
   <span class="spacer"></span>
 <!--  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">-->

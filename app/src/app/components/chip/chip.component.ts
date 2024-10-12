@@ -54,7 +54,8 @@ export class ChipComponent {
     if ($event.selected && !selectedProductsIds.includes(this.chipData.productId)) {
       selectedProducts?.add(this.chipData);
     }
-    this.state.selected.set(selectedProducts);
+    // this.state.selected.set(selectedProducts);
+    this.state.onChangeProducts.next(selectedProducts)
     this.saveToLocalStorage()
   }
 

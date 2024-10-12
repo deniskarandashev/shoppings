@@ -13,6 +13,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {Product} from './models/product.interface';
 import {EncriptionUtils} from './utils/encription.utils';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { TableComponent } from './components/table/table.component';
+import { Mode } from './models/mode.enum';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +27,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ChipsComponent,
     MatChipsModule,
     InputComponent,
-    MatSnackBarModule
+    MatSnackBarModule,
+    TableComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -58,7 +61,8 @@ export class AppComponent implements OnInit, OnDestroy {
       localStoredSelectedArr.forEach((s: Product) => {
         localStoredSelectedSet.add(s)
       })
-      this.state.selected.set(localStoredSelectedSet)
+      // this.state.selected.set(localStoredSelectedSet)
+      this.state.onChangeProducts.next(localStoredSelectedSet)
       this._cdr.detectChanges()
     }
 
@@ -67,7 +71,8 @@ export class AppComponent implements OnInit, OnDestroy {
       if (data) {
         const selectedProducts = EncriptionUtils.decodedData(data);
         console.log('Полученные продукты:', selectedProducts);
-        this.state.selected.set(selectedProducts)
+        // this.state.selected.set(selectedProducts)
+        this.state.onChangeProducts.next(selectedProducts)
       }
     });
 
@@ -76,5 +81,21 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     const stateStr = JSON.stringify(Array.from(this.state.selected()))
     window.localStorage.setItem(this.STATE_KEY, stateStr)
+  }
+
+  get isAddNewShown(): boolean {
+    return this.state.isAddNewMode()
+  }
+
+  get isTableShown(): boolean {
+    return this.state.mode() === Mode.TABLE
+  }
+
+  get isSelectedChipsShown(): boolean {
+    return !!(this.state?.selected()?.size && this.state.mode() === Mode.MAIN)
+  }
+
+  get isChipsShown(): boolean {
+    return this.state.mode() === Mode.MAIN
   }
 }

@@ -2,7 +2,6 @@
   <mat-chip-option
     #chipOption
     (selectionChange)="onSelect($event)"
-    [selected]="isSelected"
   >
     <div class="chip-content">
       <span>{{ i ? i + '. ' : '' }}{{  chipData.productName }}</span>

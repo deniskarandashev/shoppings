@@ -6,6 +6,8 @@ import {StateService} from '../../state/state.service';
 import {EncriptionUtils} from '../../utils/encription.utils';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {NotificationComponent} from '../notification/notification.component';
+import { ToggleModeComponent } from '../toggle-mode/toggle-mode.component';
+import { Mode } from '../../models/mode.enum';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -13,7 +15,8 @@ import {NotificationComponent} from '../notification/notification.component';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    NotificationComponent
+    NotificationComponent,
+    ToggleModeComponent
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
@@ -42,5 +45,9 @@ export class HeaderComponent {
     this._snackBar.openFromComponent(NotificationComponent, {
       duration: 2000,
     });
+  }
+
+  get isAddBtnDisabled(): boolean {
+    return this.state.mode() === Mode.CARDS
   }
 }

@@ -1,6 +1,10 @@
 <app-header></app-header>
-<mat-chip-set *ngIf="state?.selected()?.size" aria-label="Chihuahua traits">
+<app-input *ngIf="isAddNewShown"></app-input>
+
+<app-table *ngIf="isTableShown"></app-table>
+<mat-chip-set *ngIf="isSelectedChipsShown" aria-label="Chihuahua traits">
   <app-chips [selectedMode]="true"></app-chips>
 </mat-chip-set>
-<app-input *ngIf="state.isAddNewMode()"></app-input>
-<app-row *ngFor="let d of data" [category]="d"></app-row>
+<ng-container *ngIf="isChipsShown">
+  <app-row *ngFor="let d of data" [category]="d"></app-row>
+</ng-container>

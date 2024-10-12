@@ -39,20 +39,22 @@ export class InputComponent {
     const products = inputStrArr.map(str => {
       const trimmedStr = str.trim();
       const [namePart, categoryPart] = trimmedStr.split('*');
-      if (categoryPart) {
-        selected.add(<Product>{
-          productName: namePart.trim(),
-          productId: namePart.trim().split(' ')[0],
-          category: categoryPart.trim()
-        });
-      }
-      selected.add(<Product>{
+      // if (categoryPart) {
+      //   selected.add(<Product>{
+      //     productName: namePart.trim(),
+      //     productId: namePart.trim().split(' ')[0],
+      //     category: categoryPart.trim()
+      //   });
+      // }
+      const newProduct = (<Product>{
         productName: namePart.trim(),
         productId: namePart.trim().split(' ')[0],
       });
-    });
 
-    console.log('====>', products);
+      selected.add(newProduct)
+
+      this.state.onChangeProducts.next(selected)
+    });
 
     this.state.selected()
   }
