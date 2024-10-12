@@ -1,6 +1,6 @@
 <app-header></app-header>
 <app-input *ngIf="isAddNewShown"></app-input>
-
+<app-cards  *ngIf="isCardsShown"></app-cards>
 <app-table *ngIf="isTableShown"></app-table>
 <mat-chip-set *ngIf="isSelectedChipsShown" aria-label="Chihuahua traits">
   <app-chips [selectedMode]="true"></app-chips>

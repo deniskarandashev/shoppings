@@ -1,0 +1,14 @@
+<ng-content *ngFor="let card of cards">
+    <button mat-stroked-button class="btn" (click)="cardToShow = card.img">{{ card.name }}</button>
+</ng-content>
+
+<div>
+    <img class="big" *ngIf="cardToShow" [src]="'/assets/cards/' + cardToShow + '.png'" (click)="cardToShow = ''">
+</div>
+
+<!-- <ng-content *ngFor="let card of cards" [ngCalss]="{hide: hide}">
+    <img [ngClass]="{
+        small: card.isSmall,
+        big: !card.isSmall
+    }" [src]="'/assets/cards/' + card.img + '.png'" (click)="card.isSmall = !card.isSmall">
+</ng-content> -->

@@ -15,6 +15,7 @@ import {EncriptionUtils} from './utils/encription.utils';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { TableComponent } from './components/table/table.component';
 import { Mode } from './models/mode.enum';
+import { CardsComponent } from './components/cards/cards.component';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,8 @@ import { Mode } from './models/mode.enum';
     MatChipsModule,
     InputComponent,
     MatSnackBarModule,
-    TableComponent
+    TableComponent,
+    CardsComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -97,5 +99,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   get isChipsShown(): boolean {
     return this.state.mode() === Mode.MAIN
+  }
+  
+  get isCardsShown(): boolean {
+    return this.state.mode() === Mode.CARDS
   }
 }
