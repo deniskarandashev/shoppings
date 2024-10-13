@@ -96,4 +96,18 @@ export class TableComponent {
   //   })
   //   return sum.toString();
   // }
+
+  onCheckbox(row: Product): void {
+    const selected = Array.from(this.state.selected())
+    .map((p => {
+      if (p.productName === row.productName) {
+        p.includedToTotalPrice = !!p.includedToTotalPrice ? false : true;
+      }
+      return p;
+    }))
+    // .sort((a, b) => {
+    //   return Number(!!a.includedToTotalPrice) - Number(!!b.includedToTotalPrice);
+    // });
+    this.state.onChangeProducts.next(new Set<Product>(selected))
+  }
 }

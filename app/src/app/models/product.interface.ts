@@ -6,6 +6,7 @@ export interface Product {
   productId: string,
   price?: string,
   quantity?: number,
+  includedToTotalPrice?: boolean,
   tag?: ProductTag,
   categories?: Category[]
   category?: Category | string

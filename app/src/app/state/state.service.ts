@@ -17,6 +17,7 @@ export class StateService {
   isAddNewMode = signal(this.defaultState.isAddNewMode)
   tableData = signal(new MatTableDataSource<Product>(Array.from(this.selected())))
   totalCost = signal(0)
+  totalCostSelected = signal(0)
   mode = signal(Mode.MAIN)
 
   onChangeProducts = new Subject<Set<Product>>();
@@ -27,6 +28,7 @@ export class StateService {
       this.selected.set(pp)
       this.tableData.set(new MatTableDataSource<Product>(Array.from(pp)))
       this.calcTotalCost();
+      this.calcTotalCostSelected()
     })
 
     this.onChangeMode.subscribe((m: Mode) => {
@@ -44,5 +46,19 @@ export class StateService {
       sum += cost;
     })
     this.totalCost.set(sum)
+  }
+
+  private calcTotalCostSelected(): void {
+    const selected = Array.from(this.selected());
+    let sum = 0;
+    selected.forEach((p: Product) => {
+      if (p.includedToTotalPrice) {
+        const price: number = parseFloat(p.price ?? '0')
+        const quantity: number = p.quantity ?? 0;
+        const cost = price * quantity;
+        sum += cost;
+      }
+    })
+    this.totalCostSelected.set(sum)
   }
 }
