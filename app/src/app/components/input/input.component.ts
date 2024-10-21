@@ -49,6 +49,7 @@ export class InputComponent {
       const newProduct = (<Product>{
         productName: namePart.trim(),
         productId: namePart.trim().split(' ')[0],
+        quantity: '1'
       });
 
       selected.add(newProduct)

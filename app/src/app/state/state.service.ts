@@ -41,7 +41,7 @@ export class StateService {
     let sum = 0;
     selected.forEach((p: Product) => {
       const price: number = parseFloat(p.price ?? '0')
-      const quantity: number = p.quantity ?? 0;
+      const quantity: number = parseFloat(p.quantity ?? '0')
       const cost = price * quantity;
       sum += cost;
     })
@@ -54,7 +54,7 @@ export class StateService {
     selected.forEach((p: Product) => {
       if (p.includedToTotalPrice) {
         const price: number = parseFloat(p.price ?? '0')
-        const quantity: number = p.quantity ?? 0;
+        const quantity: number = parseFloat(p.quantity ?? '0')
         const cost = price * quantity;
         sum += cost;
       }

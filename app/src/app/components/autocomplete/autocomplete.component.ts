@@ -46,7 +46,6 @@ export class AutocompleteComponent implements OnInit {
 
 
     this.myControl.valueChanges.subscribe(value => {
-        console.log('input value', value);
         this.value.next(value?.toString() ?? '0')
     });
   }

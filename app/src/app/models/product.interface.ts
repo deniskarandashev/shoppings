@@ -5,7 +5,7 @@ export interface Product {
   productName: string,
   productId: string,
   price?: string,
-  quantity?: number,
+  quantity?: string,
   includedToTotalPrice?: boolean,
   tag?: ProductTag,
   categories?: Category[]

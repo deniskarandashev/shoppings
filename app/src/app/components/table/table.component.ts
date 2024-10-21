@@ -54,12 +54,9 @@ export class TableComponent {
   }
 
   onQuantityChanged(q: string, row: Product) {
-    console.log(row);
-    
-    const qNum = parseInt(q, 10) ?? null;
     const selectedUpd = Array.from(this.state.selected()).map((p: Product) => {
       if (p.productName === row.productName) {
-        p.quantity = qNum
+        p.quantity = q
       }
       return p;
     })
@@ -81,7 +78,7 @@ export class TableComponent {
 
   total(row: Product): string {
     const price: number = parseFloat(row.price || '0') ?? 0;
-    const quantity: number = row.quantity ?? 0;
+    const quantity: number = parseFloat(row.quantity || '0') ?? 0;
     return (price * quantity).toString()
   }
 
